@@ -15,8 +15,12 @@ class EspecialidadDAO{
                 order by nombre asc";
     }
     
+    public function consultarMedicosPorEspecialidad($idEspecialidad){
+        return "SELECT nombre, apellido 
+        FROM Medico WHERE especialidad_id = " . $idEspecialidad;
+    }
     
+       
 }
-
 
 ?>

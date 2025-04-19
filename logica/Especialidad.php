@@ -33,6 +33,19 @@ class Especialidad{
         $conexion -> cerrar();
         return $especialidades;
     }
+
+    public function obtenerMedicos(){
+        $conexion = new Conexion();
+        $especialidadDAO = new EspecialidadDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($especialidadDAO->consultarMedicosPorEspecialidad($this->id));
+        $medicos = array();
+        while(($datos = $conexion->registro()) != null){
+            $medicos[] = $datos[0] . " " . $datos[1]; // nombre + apellido
+        }
+        $conexion->cerrar();
+        return $medicos;
+    }
     
     
 }

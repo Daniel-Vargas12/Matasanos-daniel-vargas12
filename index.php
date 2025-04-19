@@ -115,7 +115,17 @@ require ("logica/Especialidad.php");
         				foreach($especialidades as $esp){
         				    echo "<li>" . $esp -> getNombre();
         				    // AQUI
-        				    
+        				    $medicos = $esp->obtenerMedicos();
+							if(count($medicos) > 0){
+								echo "<ul>";
+								foreach($medicos as $medico){
+									echo "<li>$medico</li>";
+								}
+								echo "</ul>";
+							} else {
+								echo "<ul><li class='text-muted'>No hay médicos registrados</li></ul>";
+							}
+
         				    echo "</li>";
         				}
         				echo "</ul>";
